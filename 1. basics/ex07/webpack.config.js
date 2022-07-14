@@ -8,11 +8,11 @@ module.exports = {
         filename: 'main.js',
         assetModuleFilename:'assets/images/[hash][ext]'
     },
-    module: {
-        rules: [{
-            test: /\.js/i,
+    module:{
+        rules:[{
+            test: /\.js$/i,
             exclude: /node_modules/,
-            use: ['babel-loader']
+            use: 'babel-loader'
         }, {
             test: /\.(sa|sc|c)ss$/i,
             use: ['style-loader', 'css-loader', 'sass-loader']
@@ -21,6 +21,7 @@ module.exports = {
             type: 'asset/resource'
         }]
     },
+    devtool: "eval-source-map",
     devServer: {
         host: '0.0.0.0',
         port: 9090,
