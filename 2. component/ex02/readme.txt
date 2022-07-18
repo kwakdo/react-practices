@@ -10,9 +10,12 @@ ex02: Component Styling
 4) CSS Module II
     - css-loader options: {module: true}
     - [ex02]$ npm run debug src=03 (css-modules=true)
-5)
-6)
-7)
+5) SASS & SCSS
+    - css-loader options: {module:true}
+    - [ex02]$ npm run debug src=04 (css-modules=true)
+6) CSS in JS(Style Component), Less & Styleable
+7) Font Awesome
+8) React Modal
 
 ======================================================================================
 1. 설치
