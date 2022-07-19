@@ -1,4 +1,4 @@
-ex02: Component Styling
+ex03: Component Styling
 
 1) Inline Handler
 2) Function Handler
