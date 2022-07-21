@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 export default function TitelBar02() {
-    const onClickHandler = e => {
-        console.log('TItleBar02 Clicked')
-    }
+    const [stateNo, setStateNo] = useState(10);
+
     return (
         <h1 
-                onClick={onClickHandler}
-                style={{
-                    cursor: 'pointer'
-                }}>
+                onClick={ e => {
+                    setStateNo(stateNo + 1); 
+                    console.log('TItleBar02 Clicked:' + stateNo)
+                }}
+                style={{cursor: 'pointer'}}>
                 Function Handler(Functional Component)
+                <br/>
+                {
+                    stateNo
+                }
             </h1>
     )
 }

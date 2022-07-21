@@ -4,11 +4,20 @@ export default class TitelBar01 extends Component {
     constructor(props) {
         super(props);
 
+        // this.no VS this.state.no
         this.no = 10;
+        this.state = {
+            no: 10
+        };
     }
     onClickHandler() {
-        console.log(this)
+        // this.no VS this.state.no
+        this.no++;
         console.log('TitleBar01 clicked:' + this.no)
+        this.setState({
+            no: this.state.no + 1
+        })
+        console.log('TitleBar01 clicked:' + this.state.no)
     }
     render() {
         return (
@@ -18,6 +27,11 @@ export default class TitelBar01 extends Component {
                     cursor: 'pointer'
                 }}>
             Function Handler(Class Component)
+            <br/>
+            {
+                // this.no VS this.state.no
+                `${this.no} VS ${this.state.no}`
+            }
             </h1>
         )
     }
