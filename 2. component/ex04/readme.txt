@@ -13,20 +13,36 @@ ex04: State
     2) 예제 src/01
 
 02. 제어 컴포넌트
-    1) input, textarea, option과 같은 폼(<form/>) 컴포넌트에서 사용자 입력에 따라 state 값이 변경되고 렌더링하는 컴포넌트
+    1) input, textarea, select 같은 폼(<form/>) 컴포넌트에서 사용자 입력에 따라 state 값이 변경되고 렌더링하는 컴포넌트
         제어 컴포넌트
-            - 
-            - 
-    4) 제어 컴포넌트:       ex) src/02
-    5) 비제어 컴포넌트:     ex) src/03
+            - 예제 src/02
+            - '컴포넌트의 UI를 외부에서 변경할 수 없고 내부의 상태 변경으로 가능하다'라는 리액트 컴포넌트의 작성 원칙을 준수할 수 있다.
+            - 사용자 입력 값을 제어(제한, 다양한 validation)할 수 있다.
+    5) 비제어 컴포넌트
 
 03. 상태 컴포넌트 vs 순수(Pure, Dumb) 컴포넌트
+    1. 상태 컴포넌트
+        - 상태를 관리하는 컴포넌트
+        - 보통 상태 컴포넌트는 컴포넌트 계층의 상위에 있다.
+        - 보통 상태 컴포넌트는 순수 컴포넌트를 하나 이상 래핑할 수 있다.
+    2. 순수 컴포넌트
+        - 상태 없이 속성(props)으로 하면만 랜더링하는 컴포넌트
+        - 재사용, 테스트하기 좋다.
+   *3. 애플리케이션의 컴포넌트들은 상태 컴포넌트와 순수 컴포넌트로 분리하여 개발하는 것이 좋다.
+    4. 어떤 컴포넌트가 상태 컴포넌트인가?
+    - 상태를 기반으로 렌더링하는 컴포넌트 ex) 제어컴포넌트
+    - 다수의 하위 컴포넌트를 가지고 있는 공통(하나)의 컴포넌트
+    - 컴포넌트 Hierachy에서 상위에 있는 상태를 가져야만 하는 컴포넌트
+    - 못 찾겠으면, 상태를 관리하는 컴포넌트를 만들고 하위(pure) 컴포넌트를 래핑하도록 한다.
+
     ex) emaillist
 
+04. Data Flow(Bootom -> up)
+    ex) emaillist
 ======================================================================================
 1. 설치
 [ex04]$ npm i -D webpack webpack-cli webpack-dev-server style-loader css-loader node-sass sass-loader babel-loader @babel/core @babel/cli @babel/preset-env @babel/preset-react
-[ex04]$ npm i react react-dom prop-type
+[ex04]$ npm i react react-dom prop-type @fortawesome/fontawesome-svg-core @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
 
 2. 설정
 babel.config.json

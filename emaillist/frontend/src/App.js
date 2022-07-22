@@ -1,17 +1,33 @@
-import React from 'react';
-import emails from './assets/json/data.json';
-import Emaillist from './Emaillist';
+import React, {useState} from 'react';
+import RegisterForm from './RegisterForm';
 import SearchBar from './SearchBar';
-import style from './assets/css/styles.css';
+import Emaillist from './Emaillist';
+import data from './assets/json/data.json'
+import './assets/scss/App.scss';
 
-function App() {
-    
-    return (
-        <div id={style.App}>
-            <SearchBar />
-            <Emaillist emails ={emails}/>
-        </div>
-    );
+const App = () => {
+  const [emails, setEmails] = useState(data);
+  
+  const notifyEmailDelete = function(no) {
+    console.log(no);
+  }
+
+  const notifyEmailAdd = function(email) {
+    console.log(email);
+  }
+
+  const notifyKeywordChanged = function(keyword) {
+    const result = data.filter(e => e.firstName.indexOf(keyword) !== -1 || e.lastName.indexOf(keyword) !== -1 || e.email.indexOf(keyword) !== -1);
+    setEmails(result);
+  }
+
+  return (
+    <div id={'App'}>
+      <RegisterForm callback={notifyEmailAdd} />
+      <SearchBar callback={notifyKeywordChanged} />
+      <Emaillist emails={emails} />
+    </div>
+  )
 }
 
-export default App;
+export default App
