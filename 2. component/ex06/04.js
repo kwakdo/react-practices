@@ -25,7 +25,10 @@ const updateOrder = update(state.order, {
         },
         // 배열 요소에 추가하기
         $push: [{
-
+            no: "c002-003",
+            name: "블루양말",
+            price: 2000,
+            amount: 1
         }]
     }
 });
