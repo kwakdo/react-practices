@@ -48,7 +48,7 @@ $ npm i react-addons-update
 ```javascript
 import update from 'react-addons-update';
 
-const newObject = update(objectInState, { [WHERE] : { [WHAT]: updateValue } });
+const newObject = update(objectInState, { [WHERE(apth)] : { [WHAT]: updateValue } });
 ```
 
 4. 업데이트 형식
@@ -56,7 +56,7 @@ const newObject = update(objectInState, { [WHERE] : { [WHAT]: updateValue } });
    - 배열 요소 추가   $push
    - 배열 요소 변경   $set
 
-5. WHAT 명령
+5. HOW 명령
    - $push      *
    - $splice
    - $unsift

@@ -1,35 +1,43 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
-import TaskList from "./TaskList";
-import Task from "./Task";
+import TaskList from './TaskList'
 import styles from './assets/scss/Card.scss';
 
-export default function Card({no, title, description, status, tasks}) {
-    const [showDetail, setShowDetail] = useState(false);
+export default function Card({card}) {
+    const {no, title, description, status, tasks} = card;
+    const [detail, setDetail] = useState(true);
+    const styleColor = {
+            position: 'absolute',
+            zIndex: -1,
+            top: 0,
+            left: 0,
+            bottom: 0,
+            width: 3,
+            backgroundColor: status === 'ToDo' ? '#bd8D31' : (status === 'Doing' ? '#3a7e28' : '#222') 
+    }
+
+    const onClickDetail = () => {
+      setDetail((prevDetail) => !prevDetail );
+    }
 
     return (
         <div className={styles.Card}>
-            <div
-                className={!showDetail ?styles.Card__Title : [styles.Card__Title, styles.Card__Title__Open].join(" ")}
-                onClick={e => {setShowDetail(showDetail => !showDetail)}}>
-                {title}
+          <div style={styleColor}/>
+          <div 
+            className={detail ? styles.Card__Title : [styles.Card__Title, styles.Card__Title__Open].join(" ")} 
+            onClick={onClickDetail}>{title}
+          </div>
+          { 
+           
+                    
+            <div className='Card__Details'>
+              {description}
+              {detail ? 
+              null :   
+              <TaskList tasks={tasks}/>
+              }
             </div>
-            {
-                showDetail ?
-                <div>
-                {description}
-                <TaskList tasks={tasks} />
-                </div> 
-                : <div></div>
-            }
+          }
+
         </div>
     );
-}
-
-Card.propTypes = {
-    // title: PropTypes.string.isRequired,
-    title: (props, propName, componentName) => (!props[propName] || typeof props[propName] !== 'string' || props[propName].length > 50) ? new Error(`${propName} in ${componentName} is longer than 50 characters`) : null,
-    description: PropTypes.string,
-    status: PropTypes.string.isRequired,
-    tasks: PropTypes.arrayOf(PropTypes.shape(Task.propTypes))
 }

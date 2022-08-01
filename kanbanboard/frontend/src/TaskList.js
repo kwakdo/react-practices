@@ -1,17 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Task from './Task';
-import styles from './assets/css/TaskList.css';
+import Task from './Task'
+import styles from './assets/scss/TaskList.scss';
 
 export default function TaskList({tasks}) {
+    
     return (
-        <div className='TaskList'>
+        <div className={styles.TaskList}>
             <ul>
-                {tasks.map(task => <Task
-                                        key={task.no}
-                                        no={task.no}
-                                        name={task.name} 
-                                        done={task.done} />)}
+                {tasks.map((task) => <Task key={task.no} task={task} />)}
             </ul>
             <input
                 type='text'
@@ -19,8 +15,4 @@ export default function TaskList({tasks}) {
                 placeholder='태스크 추가'/>
         </div>
     );
-}
-
-TaskList.propTypes = {
-    tasks: PropTypes.arrayOf(PropTypes.shape(Task.propTypes))
 }
