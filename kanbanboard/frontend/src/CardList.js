@@ -11,7 +11,7 @@ function CardList({title, cards}) {
             </h1>
             {
                 cards.map((card) => {
-                    console.log("aaaa", card)
+                    
                     return (<Card key={card.no} card={card}/>)
             
             })
